@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Streaming Page</title>
+  <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+  <script src="https://unpkg.com/video.js/dist/video.js"></script> 
+</head>
+
+<body>
+
+  <div id="video-container" class="video-container">
+    <!-- Video player will be dynamically added here -->
+  </div>
+
+  <script>
+    function playVideo(videoUrl) {
+      // Clear previous video player, if any  
+      const oldPlayer = document.getElementById('my-video');
+      if (oldPlayer) {
+        videojs(oldPlayer).dispose();
+      }
+
+      // Create a new video player
+      const videoContainer = document.getElementById('video-container');
+      const newPlayer = document.createElement('video');
+      newPlayer.id = 'my-video';
+      newPlayer.className = 'video-js'; 
+      newPlayer.controls = true;
+      newPlayer.preload = 'auto';
+      newPlayer.width = '640';
+      newPlayer.height = '264';
+      const source = document.createElement('source');
+      source.src = videoUrl;  
+      source.type = 'application/x-mpegURL';
+      newPlayer.appendChild(source); 
+      videoContainer.appendChild(newPlayer);
+      
+      // Initialize video.js player  
+      videojs('my-video');
+    }
+  </script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Streaming Page</title>
+  <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+  <script src="https://unpkg.com/video.js/dist/video.js"></script>
+</head>
+
+<body>
+
+  <div id="video-container" class="video-container">
+    <!-- Video player will be dynamically added here -->
+  </div>
+
+  <div id="video-info" class="video-info">
+    <h3>Currently Playing:</h3>
+    <p id="video-name">No video selected</p>
+  </div>
+
+  <script>
+    function playVideo(videoUrl, videoName) {
+      // Clear previous video player, if any
+      const oldPlayer = document.getElementById('my-video');
+      if (oldPlayer) {
+        videojs(oldPlayer).dispose();
+      }
+
+      // Create a new video player
+      const videoContainer = document.getElementById('video-container');
+      const newPlayer = document.createElement('video');
+      newPlayer.id = 'my-video';
+      newPlayer.className = 'video-js';
+      newPlayer.controls = true;
+      newPlayer.preload = 'auto';
+      newPlayer.width = '640';
+      newPlayer.height = '264';
+      const source = document.createElement('source');
+      source.src = videoUrl;
+      source.type = 'application/x-mpegURL';
+      newPlayer.appendChild(source);
+      videoContainer.appendChild(newPlayer);
+
+      // Update video name
+      const videoNameElement = document.getElementById('video-name');
+      videoNameElement.textContent = videoName;
+
+      // Initialize video.js player
+      videojs('my-video');
+    }
+  </script>
+
+  <!-- Buttons to play each video -->
+  <button onclick="playVideo('https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/9XM/9XM.isml/index.m3u8', '9XM')">9XM</button>
+  <button onclick="playVideo('https://vidcdn.vidgyor.com/asianet-origin/liveabr/playlist.m3u8', 'Asianet News')">Asianet News</button>
+  <button onclick="playVideo('https://idvd.multitvsolution.com/idvo/bharatsamachar.m3u8', 'Bharat Samachar TV')">Bharat Samachar TV</button>
+  <button onclick="playVideo('https://5a1178b42cc03.streamlock.net/8212/8212/playlist.m3u8', 'CCV')">CCV</button>
+  <button onclick="playVideo('https://prod-sports-north-gm.jiocinema.com/bpk-tv/Colors_Cineplex_Bollywood_voot_MOB/Fallback/index.m3u8', 'Colors Cineplex Bollywood')">Colors Cineplex Bollywood</button>
+  <button onclick="playVideo('https://prod-sports-north-gm.jiocinema.com/bpk-tv/Rishtey_Cineplex_voot_MOB/Fallback/index.m3u8', 'Colors Cineplex Superhits')">Colors Cineplex Superhits</button>
+  <button onclick="playVideo('https://prod-sports-north-gm.jiocinema.com/bpk-tv/Comedy_Central_HD_voot_MOB/Fallback/index.m3u8', 'Comedy Central (India)')">Comedy Central (India)</button>
+  <button onclick="playVideo('https://hls.media.nic.in/hls/live/ddnews/ddnews.m3u8', 'DD News')">DD News</button>
+  <button onclick="playVideo('https://live.enlightnews.com/live/enlightnews/tracks-v1a1/index.m3u8', 'Enlight News')">Enlight News</button>
+  <button onclick="playVideo('https://d32gxr3r1ksq2p.cloudfront.net/master.m3u8', 'ET Now Swadesh')">ET Now Swadesh</button>
+  <button onclick="playVideo('https://xlbor37ydvaj-hls-live.wmncdn.net/firstindianewstv1/live.stream/index.m3u8', 'First India News')">First India News</button>
+  <button onclick="playVideo('https://bpgdlwwar3ze-hls-live.wmncdn.net/goodnews/live.stream/playlist.m3u8', 'GoodNews TV (India)')">GoodNews TV (India)</button>
+  <button onclick="playVideo('https://7mbd4ogkr3gx-hls-live.wmncdn.net/harvesttvlive1/bbb19eae240ec100af921d511efc86a0.sdp/index.m3u8', 'Harvest TV')">Harvest TV</button>
+  <button onclick="playVideo('https://live.wmncdn.net/harvestenglish/d1796a22d24e8696c7d5d0b5c349fdd2.sdp/index.m3u8', 'Harvest TV Keralam')">Harvest TV Keralam</button>
+  <button onclick="playVideo('https://videodelivery.net/98334a974d26e45759c6baa8bceabbcf/manifest/video.m3u8', 'Hope Channel India')">Hope Channel India</button>
+  <button onclick="playVideo('https://livetv.newsx.com/itv/itvnetwork7/playlist.m3u8', 'India News Madhya Pradesh/Chhattisgarh')">India News Madhya Pradesh/Chhattisgarh</button>
+  <button onclick="playVideo('https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/playlist.m3u8', 'India Today')">India Today</button>
+  <button onclick="playVideo('https://7epd6o8edk9b-hls-live.wmncdn.net/inh24/live.stream/playlist.m3u8', 'INH 24x7')">INH 24x7</button>
+  <button onclick="playVideo('https://live.wmncdn.net/jantatv/live.stream/index.m3u8', 'Janta TV')">Janta TV</button>
+  <button onclick="playVideo('https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/wetv_nim_https/050522/wetv/playlist.m3u8', 'Kairali We')">Kairali We</button>
+  <button onclick="playVideo('https://oqgdrkxby4rm-hls-live.5centscdn.com/kaumudytv/live.stream/playlist.m3u8', 'Kaumudy TV')">Kaumudy TV</button>
+  <button onclick="playVideo('https://kcltv.livebox.co.in/kclhls/live.m3u8', 'KCL TV')">KCL TV</button>
+  <button onclick="playVideo('https://932y4x26ljv8-hls-live.5centscdn.com/victers/tv.stream/playlist.m3u8', 'Kite Victers')">Kite Victers</button>
+  <button onclick="playVideo('https://knews.livebox.co.in/youtubehls/live.m3u8', 'K News India')">K News India</button>
+  <button onclick="playVideo('https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/mazhavilmanorama_nim_https/050522/mazhavilmanorama/playlist.m3u8', 'Mazhavil Manorama')">Mazhavil Manorama</button>
+  <button onclick="playVideo('https://prod-sports-north-gm.jiocinema.com/bpk-tv/MTV_Beats_HD_voot_MOB/Fallback/index.m3u8', 'MTV Beats')">MTV Beats</button>
+  <button onclick="playVideo('https://ndtv24x7elemarchana.akamaized.net/hls/live/2003678/ndtv24x7/master.m3u8', 'NDTV 24x7')">NDTV 24x7</button>
+  <button onclick="playVideo('https://ndtvindiaelemarchana.akamaized.net/hls/live/2003679/ndtvindia/master.m3u8', 'NDTV India')">NDTV India</button>
+  <button onclick="playVideo('https://vidcdn.vidgyor.com/news24-origin/liveabr/playlist.m3u8', 'News 24 (India)')">News 24 (India)</button>
+  <button onclick="playVideo('https://prod-sports-north-gm.jiocinema.com/bpk-tv/Sonic_Nickelodeon_voot_MOB/Fallback/index.m3u8', 'Nickelodeon Sonic')">Nickelodeon Sonic</button>
+  <button onclick="playVideo('https://royalstarindia.co.in/pularitv_hls/pularitv.m3u8', 'Pulari TV')">Pulari TV</button>
+  <button onclick="playVideo('https://bk7l298nyx53-hls-live.5centscdn.com/realnews/e7dee419f91aa9e65939d3677fb9c4f5.sdp/playlist.m3u8', 'Real News Kerala')">Real News Kerala</button>
+  <button onclick="playVideo('https://j78dp346yq5r-hls-live.5centscdn.com/safari/live.stream/playlist.m3u8', 'Safari TV')">Safari TV</button>
+  <button onclick="playVideo('https://6284rn2xr7xv-hls-live.wmncdn.net/shubhsandeshtv1/live123.stream/index.m3u8', 'Shubhsandesh')">Shubhsandesh</button>
+  <button onclick="playVideo('https://5a1178b42cc03.streamlock.net/8220/8220/playlist.m3u8', 'Starnet')">Starnet</button>
+  <button onclick="playVideo('https://travelxp-travelxp-1-nz.samsung.wurl.tv/playlist.m3u8', 'Travelxp')">Travelxp</button>
+  <button onclick="playVideo('https://5a1178b42cc03.streamlock.net/8222/8222/playlist.m3u8', 'Venad News')">Venad News</button>
+</body>
+
+</html>
